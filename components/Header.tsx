@@ -8,7 +8,7 @@ function Header() {
         <Link href="/">
           <div className="border-solid border-2 border-rose-600 p-1 cursor-pointer">
             <div className="bg-rose-600 p-2 text-center">
-              <p className="text-white text-2xl leading-none font-light">
+              <p className="text-white font-serif text-2xl leading-none font-light">
                 RIVER WALK
               </p>
             </div>
