@@ -9,10 +9,32 @@ interface Props {
 }
 
 const Post = ({ post }: Props) => {
-  console.log(post);
+  const bodyContent = post.body[0].children[0].text;
+  console.log(bodyContent);
   return (
     <>
       <Header />
+      <div className=" m-4 pb-4 grow">
+        <img
+          className="h-full md:h-100 w-full pb-4 object-cover"
+          src={urlFor(post.mainImage).url()!}
+        />
+        <p className="text-center text-xl p-1 my-8 md:text-4xl font-semibold font-serif text-gray-500">
+          {post.title}
+        </p>
+        <p className="text-justify p-1 mt-1 md:text-lg font-serif text-gray-600 ">
+          {bodyContent}
+        </p>
+      </div>
+      <div className="flex justify-between md:justify-center space-x-4 m-4 mt-3 align-middle">
+        <p className="font-bold text-lg text-gray-600 lg:text-2xl my-auto ">
+          By {post.author.name}
+        </p>
+        <img
+          className="h-20 md:h-30 lg:h-40 object-contain"
+          src={urlFor(post.author.image).url()!}
+        />
+      </div>
     </>
   );
 };
@@ -34,8 +56,6 @@ export const getStaticPaths = async () => {
       slug: post.slug.current,
     },
   }));
-
-  console.log(paths);
 
   return {
     paths,
